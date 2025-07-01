@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 
 # 🔐 Load API key from .env file
 load_dotenv()
-api_key = os.getenv("OPENROUTER_API_KEY")
+api_key = st.secrets["OPENROUTER_API_KEY"]
+
 MODEL_NAME = "mistralai/mistral-7b-instruct"
 
 # 🔧 Streamlit page config
