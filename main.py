@@ -63,12 +63,12 @@ if send and user_input.strip():
         "messages": st.session_state.messages,
         "max_tokens": 400
     }
-  headers = {
-    "Authorization": f"Bearer {api_key}",
-    "Content-Type": "application/json"
-  }
 
-  
+    try:
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
     try:
         res = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=payload)
         if res.status_code == 200:
