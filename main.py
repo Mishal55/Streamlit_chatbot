@@ -3,7 +3,8 @@ import requests
 
 # 🔐 Load API key securely from Streamlit Secrets
 api_key = st.secrets["OPENROUTER_API_KEY"]
-model = "openai/gpt-3.5"  # or "openai/gpt-4" etc.
+MODEL_NAME = "openchat/openchat-7b"  
+ # or "openai/gpt-4" etc.
 
 # 🔧 Streamlit page config
 st.set_page_config(page_title="AI Chatbot", page_icon="🤖", layout="centered")
