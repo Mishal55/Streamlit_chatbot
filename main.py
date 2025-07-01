@@ -1,10 +1,8 @@
 import streamlit as st
 import requests
 
-
-# 🔐 Load API key from .env file
+# 🔐 Load API key securely from Streamlit Secrets
 api_key = st.secrets["OPENROUTER_API_KEY"]
-
 MODEL_NAME = "mistralai/mistral-7b-instruct"
 
 # 🔧 Streamlit page config
@@ -37,7 +35,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-
 # 📦 Session state init
 if "messages" not in st.session_state:
     st.session_state.messages = [{"role": "system", "content": "You are a helpful assistant."}]
@@ -64,24 +61,26 @@ if send and user_input.strip():
         "max_tokens": 400
     }
 
-    try:
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
+
     try:
         res = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=payload)
         if res.status_code == 200:
             reply = res.json()["choices"][0]["message"]["content"]
         elif res.status_code == 402:
             reply = "⚠️ You're out of credits. Visit [OpenRouter Settings](https://openrouter.ai/settings/credits) to upgrade."
+        elif res.status_code == 401:
+            reply = "⚠️ Unauthorized: Please check if your API key is valid and properly configured in Streamlit Secrets."
         else:
             reply = f"⚠️ Error {res.status_code}: {res.text}"
     except Exception as e:
         reply = f"⚠️ Exception: {e}"
 
     st.session_state.messages.append({"role": "assistant", "content": reply})
-    st.rerun()  # 🔁 Clear input + refresh
+    st.rerun()
 
 # 🧹 Clear chat button at bottom
 if st.button("🧹 Clear Chat", use_container_width=True):
