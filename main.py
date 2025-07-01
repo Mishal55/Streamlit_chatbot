@@ -3,7 +3,7 @@ import requests
 
 # 🔐 Load API key securely from Streamlit Secrets
 api_key = st.secrets["OPENROUTER_API_KEY"]
-MODEL_NAME = "perplexity/pplx-7b-chat"
+MODEL_NAME = "meta-llama/llama-3-8b-instruct"
 # 🔧 Streamlit page config
 st.set_page_config(page_title="AI Chatbot", page_icon="🤖", layout="centered")
 st.markdown("<h2 style='text-align:center;'>🤖 Smart Chatbot </h2><hr>", unsafe_allow_html=True)
