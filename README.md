@@ -22,8 +22,7 @@ An interactive AI chatbot built using **Python**, **Streamlit**, and **OpenAI AP
 
 ## 📸 Preview
 
-![Chatbot Screenshot](<img width="1673" height="860" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/5b9dc6c3-725c-4965-9aad-03d15378ce0f" />
-)
+![Chatbot Screenshot]<img width="1673" height="860" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/3e2c6be7-9077-4bc0-95b0-32a8a05f4d5f" />
 
 ---
 
